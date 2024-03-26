@@ -2,17 +2,22 @@ package com.vn.devmaster.services.mapper;
 
 import com.vn.devmaster.services.dto.ClazzDTO;
 import com.vn.devmaster.services.entites.Clazz;
+import lombok.Builder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Builder
 @Component
 public class ClazzMapper implements EntityMapper<Clazz, ClazzDTO>{
 
     @Override
     public Clazz toEntity(ClazzDTO dto) {
-        return null;
+        return Clazz
+                .builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .build();
     }
 
     @Override
@@ -36,7 +41,7 @@ public class ClazzMapper implements EntityMapper<Clazz, ClazzDTO>{
             ClazzDTO clazzDTO =toDto(clazz);
             dtos.add(clazzDTO);
         });
-        return null;
+        return dtos;
     }
 }
 
