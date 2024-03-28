@@ -2,16 +2,20 @@ package com.vn.devmaster.services.controller;
 
 import com.vn.devmaster.services.dto.StudentDTO;
 import com.vn.devmaster.services.entites.Student;
+import com.vn.devmaster.services.repositiory.StudentRepositiory;
 import com.vn.devmaster.services.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/student")
 public class StudentController {
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private StudentRepositiory studentRepositiory;
 
 
     @GetMapping("")
@@ -43,19 +47,25 @@ public class StudentController {
     String save(@RequestBody StudentDTO student) {
         String massage = studentService.save(student);
         return massage;
-//}
-        //sửa sinh viên theo id
+    }
+    //sửa sinh viên theo id
 //    @PutMapping("")
 //    String update(@RequestParam("id")int id, @RequestBody StudentDTO studentDTO){
 //        String message = studentService.update(id, studentDTO);
 //        return message;
 //}
 
-        // xóa sinh viên theo id
+    // xóa sinh viên theo id
 //    @DeleteMapping("")
 //    String delete(@RequestParam("id") int id){
 //        String message =studentService.delete(id);
 //        return message;
 //}
+
+
+    @GetMapping("/{id}")
+    StudentDTO findStudentById(@PathVariable int id) {
+        return studentService.findStudentById(id);
     }
 }
+

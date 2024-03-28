@@ -14,6 +14,8 @@ import static com.fasterxml.jackson.databind.util.ClassUtil.name;
 public class StudentMapper implements EntityMapper<Student, StudentDTO> {
     @Autowired
     private ClazzMapper clazzMapper;
+    @Autowired
+    private SubjectMapper subjectMapper;
 
     @Override
     public  Student toEntity(StudentDTO dto) {
@@ -35,6 +37,7 @@ public class StudentMapper implements EntityMapper<Student, StudentDTO> {
                 .name(entity.getLastName()+ "" +entity.getFirstName())
                 .address(entity.getAddress())
                 .clazz(clazzMapper.toDto(entity.getClazz()))
+                .subjectDTOS(subjectMapper.toDto(entity.getSubjects()))
                 .build();
     }
 

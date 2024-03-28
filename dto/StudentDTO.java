@@ -8,6 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,4 +21,8 @@ public class StudentDTO {
 //    private String lastName;
     private String address;
     private ClazzDTO clazz;
+    private float point;
+
+    List<SubjectDTO> subjectDTOS = new ArrayList<>();
+
 }

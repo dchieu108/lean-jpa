@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -31,7 +34,11 @@ public class Student {
     @JoinColumn(name = "clazz_id")
     private Clazz clazz;
 
-
+@ManyToMany
+    @JoinTable(name = "student_subject",
+    joinColumns = @JoinColumn(name = "id_student", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "id_subject", referencedColumnName = "id"))
+    private List<Subject> subjects =new ArrayList<>();
 
 //    @Column(name = "point")
 //    private float point;
