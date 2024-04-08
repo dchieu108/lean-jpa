@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Sửa Sinh viên</h1>
+<form th:action="@{/updatestudent/{id}(id = ${id})}" method="post" th:object="${studentDTO}">
+    id:
+    <input type="text" th:field="${studentDTO.id}">
+    <br>
+    Last_Name:
+    <input type="text" th:field="${studentDTO.lastName}">
+    <br>
+    First_Name:
+    <input type="text" th:field="${studentDTO.firstName}">
+    <br>
+    address:
+    <input type="text" th:field="${studentDTO.address}">
+    <br>
+    <input type="submit" value="cập nhật">
+</form>
+</body>
+</html>

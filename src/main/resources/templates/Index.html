@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${'Hello Word ' + name}">
+
+</h1>
+<div th:text="${name}"></div>
+<!--<div th:text="${student.name}"></div>-->
+<!--<div th:text="${student.address}"></div>-->
+<div th:each="studentDTO :${studentDTOS}">
+    <div th:text="${studentDTO.address}"></div>
+    <div th:text="${studentDTO.name}"></div>
+</div>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th> ID</th>
+            <th> Họ</th>
+            <th> Tên</th>
+            <th> Địa Chỉ </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student :${studentAll}">
+            <td>  <div th:text="${student.id}"></div></td>
+            <td> <div th:text="${student.lastName}"></div></td>
+            <td> <div th:text="${student.firstName}"></div></td>
+            <td> <div th:text="${student.address}"></div></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<!--<div th:each="student :${studentAll}">-->
+<!--    <div th:text="${student.address}"></div>-->
+<!--    <div th:text="${student.lastName}"></div>-->
+<!--    <div th:text="${student.firstName}"></div>-->
+<!--    <div th:text="${student.id}"></div>-->
+</div>
+
+<div>
+    <a th:href="@{/add-student}">
+        Thêm Sinh Viên
+    </a>
+</div>
+<div>
+    <a th:href="@{/update-student/{id}(id = ${1})}">
+        Sửa Sinh Viên
+    </a>
+</div>
+<div>
+    <a th:href="@{/delete-student}">
+        Xoá sinh viên
+    </a>
+</div>
+</body>
+</html>
